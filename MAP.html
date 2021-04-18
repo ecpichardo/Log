@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>MAP</title>
+	<link rel="stylesheet" type="text/css" href="css/estilos_MAP.css">
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script> 
+</head>
+<body>
+	<div class="boton">
+			<input type="button" name="logout" class="logout" value="LOGOUT">
+	</div>
+
+ 	<div class="titulo">
+		<h1>Ministerio de Administración Pública ordena reintegro de personal</h1>
+	</div>
+
+	<div class="imagen">
+		<img src="img/edificioMAP.jpg" alt="foto de IAC">
+	</div>
+
+	<div>
+		<p><strong>SANTO DOMINGO.-</strong>El Ministerio de Administración Pública (MAP) ordenó el reintegro de todo el personal del sector salud a sus puestos de trabajo a partir del lunes 12 de abril del año 2021, ante los avances del Programa Nacional de Vacunación “Vacúnate RD”, el cual ha superado la etapa inicial.</p>
+
+		<p>Gracias a los esfuerzos del gobierno del presidente Luis Abinader en la lucha contra el covid-19, se completó la Fase IA, donde se ha vacunado el personal sanitario de todas las edades de primera línea que trabaja en los centros COVID-19, y se ha inmunizado el resto del personal de Salud de todas las edades, completadas así la primera y segunda dosis de la vacuna.</p>
+
+		<p>El MAP exhortó a continuar aplicando los protocolos establecidos por las autoridades sanitarias con la finalidad de evitar la propagación del COVID-19, y que los centros de trabajo se conviertan en un foco de contagio.</p>
+
+		<p>La medida está contenida en la resolución núm. 055-2021, autorizada por el titular del MAP, Darío Castillo Lugo, en el ejercicio de las atribuciones que le confieren la Ley 41-08 de Función Pública y la Ley 247-12 Orgánica de la Administración Pública.</p>
+
+		<p>La institución recordó que es indispensable mantener el uso obligatorio de mascarilla en las oficinas e instalaciones de los entes y órganos públicos, como medida esencial para controlar la propagación del COVID-19.</p>
+
+		<p>Asimismo, advirtió que el incumplimiento de las medidas sanitarias será sancionado con las disposiciones que establece la Ley núm. 42-01 General de Salud, del 8 de marzo de 2001.</p>
+
+		<p>“Las demás etapas de vacunación se establecen en la Fase II del Plan, será inmunizada la población dominicana con edades comprendidas entre 50 y 59 años que padezcan morbilidades y en la Fase IIB, el resto de esta población. Y para la tercera Fase de inmunización será incluida la población dominicana de entre 18 y 49 años de edad, la Fase A para quienes padezcan morbilidades y en la Fase B el resto de esta población”, indica la resolución del MAP.</p>
+
+		<p>El ministro Castillo Lugo ordenó que esta disposición sea notificada al Ministerio de Salud Pública, al Servicio Nacional de Salud, y todos los entes y órganos pertenecientes al sector salud.</p>
+
+		<p>Con la entrada en vigencia de la presente disposición, se modifica parcialmente la resolución número 039-2021 de fecha 19 de marzo de 2021, que actualiza los horarios y condiciones de trabajo en el sector público, a consecuencia del estado de emergencia impuesto por la pandemia de la COVID-19.</p>
+	</div>
+	<script>
+/* VERIFICA SI LA SESION ESTA ABIERTA O CERRADA */
+		$(function(){
+			$(document).ready(function(){
+
+				function logou(){
+					document.location.href="index.html";
+				};
+
+				if (localStorage.getItem('usuario') == null){
+					logou();
+				}
+			
+			$('.logout').click(function() {
+				localStorage.removeItem('usuario');
+				logou();
+			});	
+			});			
+		});
+/* ****************************************** */
+	</script>
+</body>
+</html>
+

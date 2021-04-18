@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Inicio</title>
+	<link rel="stylesheet" type="text/css" href="css/estilos_index.css">
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script> 
+</head>
+<body>
+	<div id="container">
+		<div class="imagen">
+			<img src="img/MAP-GOB.png">
+		</div>	
+		<div class="titulo">
+			<h1>Ministerio de Administración Pública</h1>
+		</div>
+		<div class="boton">
+<!--			<a href="logreg.html"> -->
+			<input type="button" name="entrar" class="accesar" value="Accesar">
+<!--			</a> -->
+		</div>
+	</div>
+
+	<script>
+/* FUNCIONES REFERENCIA */		
+		$(function(){
+			function login(){
+				document.location.href="logreg.html";
+			};
+			function map(){
+				document.location.href="MAP.html";
+			};
+
+/* CLICK BOTON DE LA PAGINA */
+		$('.accesar').on('click', function() {
+			if (localStorage.getItem('usuario') == null){
+				login();
+			}
+			else {
+				map();
+			}
+			});			
+		});
+	</script>
+</body>
+</html>

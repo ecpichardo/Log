@@ -1,0 +1,49 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+
+body{
+	background-image: linear-gradient(to right, blue, lightblue);
+	width: 100%;
+	height: 100vh;
+	/*color: white;*/
+	/*display: flex;*/
+	align-items: center;
+	justify-content: center;
+	font-family: Arial;
+}
+
+.titulo{
+	margin: 30px;
+	padding: 5px;
+}
+.imagen img{
+	margin: 30px;
+	/*vertical-align: top;*/
+	width: 40%; 
+	text-align: left;
+}
+
+p {
+	margin:30px;
+	font-size: 18px;
+}
+
+input[type="button"]{
+	color: white;
+	background: none;
+	border: none;
+	background: green;
+	width: 10%;
+	font-size: 14px;
+	padding: 10px 0;
+	font-family: Raleway;
+	margin-bottom: 16px;
+	border-radius: 10px;
+	transition: all .5s ease;
+}
+
+input[type="button"]:hover{
+	background: lightgreen;
+}

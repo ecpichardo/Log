@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Login</title>
+	<link rel="stylesheet" type="text/css" href="css/estilos_logreg.css">
+		<script src="https://code.jquery.com/jquery-3.4.1.js"></script> 
+</head>
+<body>
+	<div class="cod-container">
+		<div class="form-header">
+			<img src="img/MAP-GOB.png" alt="Logo" >
+			<h3 class="titulo">Ministerio de<br>Administración Pública</h3>
+		</div>
+
+		<div class="form-content">
+			<form action="#" class="cod-form">
+				<div class="form-title">
+					<h4 class="login">Login</h4>
+				</div>
+
+				<div class="input-group">
+					<input type="text" class="form-input" name="form-input" id="usuario">
+					<label class="label" for="usuario">Usuario</label> 
+				</div>
+
+				<div class="input-group">
+					<input type="password" class="form-input" name="form-input" id="pass">
+					<label class="label" for="pass">Contraseña</label> 
+				</div>
+
+				<div class="input-group">
+					<input type="button" id="btnlogin" class="form-input" value="Iniciar Sesion">
+					<p><a href="#" class="alt-form">Registrese Aqui</a></p>
+					<p><a href="index.html" class="alt-form">Atras</a></p>
+					
+				</div>
+			</form>
+		</div>
+
+
+		<div class="form-content">
+			<form action="#" class="cod-form">
+				<div class="form-title">
+					<h4 class="login">Registro</h4>
+				</div>
+				<div class="input-group">
+					<input type="text" class="form-input" name="form-input" id="reg-nombre">
+					<label class="label" for="reg-nombre">Nombre</label> 
+				</div>
+				<div class="input-group">
+					<input type="text" class="form-input" name="form-input" id="reg-apellido">
+					<label class="label" for="reg-apellido">Apellido</label> 
+				</div>
+				<div class="input-group">
+					<input type="text" class="form-input" name="form-input" id="reg-email">
+					<label class="label" for="reg-email">E-Mail</label> 
+				</div>
+
+				<div class="input-group">
+					<input type="text" class="form-input" name="form-input" id="reg-usuario">
+					<label class="label" for="reg-usuario">Usuario</label> 
+				</div>
+
+				<div class="input-group">
+					<input type="password" class="form-input" name="form-input" id="reg-pass">
+					<label class="label" for="reg-pass">Contraseña</label> 
+				</div>
+
+				<div class="input-group">
+					<input type="button" class="form-input" value="Registro" id="btnregistro">
+					<p><a  class="alt-form">Iniciar Sesion</a></p>
+					<p><a href="index.html" class="alt-form">Atras</a></p>
+
+				</div>
+			</form>
+		</div>
+	</div>
+<script>
+	$(function(){
+/* ANIMACION DEL LOGIN */	
+		$('.alt-form').click(function(){
+			$('.form-content').animate({
+				height: "toggle",
+				opacity: 'toggle'
+			},600);
+		});
+/* ******************** */
+
+/* FUNCIONES REFERENCIA LOGIN Y REGISTRO */
+		function logeado(){
+				document.location.href="MAP.html";
+		};
+		function registrado(){
+				document.location.href="logreg.html";
+		};
+/* ************************************* */
+
+/* CLICK BOTON LOGIN */
+		$('#btnlogin').click(function() {
+		var datosl = {username: $("#usuario").val(),
+            		password: $("#pass").val(),
+		};
+
+		$.ajax({
+			type:'POST',
+			/*url: "https://diplomado-api-node.herokuapp.com/login",*/
+			url: "https://LoginAPI.somee.com/api/account/login",
+			data: datosl,
+			success: function(data){
+				localStorage.setItem('usuario',data.token);
+				logeado();
+				/*console.log('acceso completado!!',data);
+				alert(localStorage.getItem('usuario'));*/
+			},
+			error: function (request, status, error) {
+				alert(error);
+			}
+		});
+		});
+/* ********************** */
+
+/* BOTON REGISTRO */
+		$('#btnregistro').click(function() {
+			var datosr = {name: $("#reg-nombre").val(),
+            		surname:  $("#reg-apellido").val(),
+            		emailAddress: $("#reg-email").val(),
+            		username: $("#reg-usuario").val(),
+            		password: $("#reg-pass").val(),
+					};
+
+			$.ajax({
+				type:'POST',
+				/*url: "https://diplomado-api-node.herokuapp.com/user",*/
+				url: "https://www.LoginAPI.somee.com/api/account/create",
+				data: datosr,
+				success: function(data){
+					/*console.log('Hecho!!',data);*/
+					registrado();
+					alert('Ha sido registrado');
+				},
+				error: function (request, status, error) {
+					/*alert(error);*/
+					console.log(error)
+				}
+			});
+		});
+/* ********************** */
+
+/* ANIMACIONES FORMULARIO DE LOGIN Y REGISTRO */
+		let formRegistro = document.getElementsByName('form-input');
+		for (let i=0; i < formRegistro.length; i++){
+			formRegistro[i].addEventListener('blur',function(){
+				if (this.value.length >= 1){
+					this.nextElementSibling.classList.add('active');
+					this.nextElementSibling.classList.remove('error');
+				} else if (this.value.length=" "){
+					this.nextElementSibling.classList.add('error');
+					this.nextElementSibling.classList.remove('active');
+				} else {
+					this.nextElementSibling.classList.remove('active');
+				}
+			})
+		}
+
+
+	});
+/* ***************************************** */
+</script>
+<!--<script src="js/form.js"></script>-->
+</body>
+</html>
+
